@@ -6,8 +6,29 @@ This project analyzes Target Brazil's e-commerce dataset using SQL in Google Big
 
 The analysis involves writing SQL queries to answer real-world business questions and transforming raw transactional data into meaningful insights that can support business decision-making.
 
-## 🎯 Business Problem
+## 🎯 Business Context
 
-Target Brazil operates one of the largest e-commerce platforms in Brazil. Understanding customer behavior, order trends, delivery performance, and payment preferences is essential for improving customer satisfaction and optimizing business operations.
+Target is a globally recognized retail company with a strong e-commerce presence in Brazil. This project analyzes approximately **100,000 e-commerce orders** placed between **2016 and 2018** to understand customer purchasing behavior, sales trends, logistics performance, delivery efficiency, and payment patterns.
 
-The objective of this project is to analyze historical e-commerce data and answer key business questions using SQL to provide actionable recommendations for marketing, logistics, and operational decision-making.
+Using SQL, this project generates data-driven insights and business recommendations that can support marketing, logistics, and operational decision-making.
+
+## 📂 Dataset Information
+
+This project uses the **Target Brazil E-commerce Dataset**, containing approximately **100,000 orders** placed between **2016 and 2018**.
+
+The dataset consists of eight relational tables:
+
+| Table | Description |
+|--------|-------------|
+| customers | Customer information |
+| orders | Order details |
+| order_items | Product pricing and freight |
+| payments | Payment information |
+| products | Product details |
+| sellers | Seller information |
+| reviews | Customer reviews |
+| geolocation | Geographic information |
+
+**Dataset Source:** [Google Drive Dataset](https://drive.google.com/drive/folders/1TGEc66YKbD443nslRi1bWgVd238gJCnb)
+
+
