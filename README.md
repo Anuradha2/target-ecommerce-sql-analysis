@@ -61,6 +61,7 @@ The project followed a structured analytical approach:
 - Mathematical Functions (`ROUND`)
 
 ## 📊 Business Questions
+The following business questions were analyzed to understand customer behavior, operational efficiency, logistics performance, regional trends, and payment patterns.
 
 ### 1. Exploratory Analysis
 - What is the structure of the dataset?
@@ -87,5 +88,31 @@ The project followed a structured analytical approach:
 ### 5. Payment Analysis
 - How do payment methods vary month over month?
 - How are orders distributed based on payment installments?
+
+## 💡 Key Insights
+
+- 📈 Order volume showed consistent year-over-year growth from 2016 to 2018, indicating increasing customer adoption.
+
+- 🌆 São Paulo (SP) recorded the highest number of customers and orders, making it Target Brazil's strongest regional market.
+
+- 🕑 Most orders were placed during the afternoon, suggesting peak customer activity during this time.
+
+- 💳 Credit cards were the most preferred payment method across the study period.
+
+- 🚚 Delivery performance exceeded estimated delivery dates in most states, reflecting efficient logistics operations.
+
+- 💰 Freight charges varied significantly across states, highlighting opportunities to optimize logistics costs.
+
+## 🚀 Business Recommendations
+
+- Prioritize marketing campaigns in high-performing states while developing strategies to improve customer acquisition in lower-performing regions.
+
+- Strengthen logistics infrastructure in states with longer delivery times.
+
+- Optimize freight costs through regional warehouse planning and route optimization.
+
+- Prepare inventory before seasonal demand peaks.
+
+- Encourage adoption of alternative payment methods through targeted promotions.
 
 
