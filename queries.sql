@@ -42,8 +42,8 @@ Identify the earliest and latest order dates available in the dataset.
 ------------------------------------------------------------------------------*/
 
 SELECT 
-    min(order_purchase_timestamp) as first_order_purchased,
-    max(order_purchase_timestamp) as last_order_purchased
+    min(order_purchase_timestamp) AS first_order_purchased,
+    max(order_purchase_timestamp) AS last_order_purchased
 FROM 
     `Target.orders`;
 
@@ -56,9 +56,34 @@ Measure the geographical coverage of Target Brazil's customer base.
 ------------------------------------------------------------------------------*/
 
 SELECT 
-    count(distinct c.customer_city) as count_of_city,
-    count(distinct c.customer_state) as count_of_sate
+    COUNT(DISTINCT c.customer_city) AS total_cities,
+    COUNT(DISTINCT c.customer_state) AS total_states
 FROM 
-    `Target.customers` c inner join `Target.orders` o on c.customer_id = o.customer_id;
+    `Target.customers` c INNER JOIN `Target.orders` o ON c.customer_id = o.customer_id;
 
+/*==============================================================================
+SECTION 2: IN-DEPTH EXPLORATION
+==============================================================================*/
+
+/*------------------------------------------------------------------------------
+Business Question 4:
+Is there a growing trend in the number of orders placed over the years?
+
+Objective:
+Analyze yearly order volume to identify whether Target Brazil experienced
+growth in customer orders over the analysis period.
+------------------------------------------------------------------------------*/
+
+SELECT 
+    format_date("%Y-%m", order_purchase_timestamp) AS year_month, 
+    COUNT(DISTINCT order_id) AS order_count
+FROM `Target.orders`
+GROUP BY 1
+ORDER BY 1;
+
+/*
+Observation:
+There is growing trend in number of orders placed over the years which means acquiring more and 
+more customers and a consistent growth in order placed by month on month
+*/
 
