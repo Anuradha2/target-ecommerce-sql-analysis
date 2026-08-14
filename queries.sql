@@ -158,5 +158,23 @@ ORDER BY
     2,
     MIN(EXTRACT(MONTH FROM o.order_purchase_timestamp));
 
+/*------------------------------------------------------------------------------
+Business Question 8:
+How are customers distributed across all the states?
+
+Objective:
+Analyze the number of customers across Brazilian states to understand the
+geographical distribution of Target Brazil's customer base.
+------------------------------------------------------------------------------*/
+
+SELECT
+    c.customer_state,
+    COUNT(DISTINCT c.customer_id) AS customer_count
+FROM `Target.customers` AS c
+INNER JOIN `Target.orders` AS o
+    ON c.customer_id = o.customer_id
+GROUP BY 1
+ORDER BY 2 DESC;
+
 
 
