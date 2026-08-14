@@ -348,5 +348,58 @@ FROM ranked
 WHERE high_rank <= 5
    OR low_rank <= 5;
 
+/*------------------------------------------------------------------------------
+Business Question 14:
+Which states have the highest and lowest average delivery times?
+
+Objective:
+Identify the top 5 states with the highest and lowest average delivery times
+to evaluate regional differences in delivery performance.
+------------------------------------------------------------------------------*/
+
+WITH delivery_time AS (
+    SELECT
+        c.customer_state,
+        DATE_DIFF(
+            o.order_delivered_customer_date,
+            o.order_purchase_timestamp,
+            DAY
+        ) AS time_to_deliver
+    FROM `Target.orders` AS o
+    INNER JOIN `Target.customers` AS c
+        ON o.customer_id = c.customer_id
+),
+
+avg_delivery_time AS (
+    SELECT
+        customer_state,
+        ROUND(AVG(time_to_deliver), 2) AS average_delivery_time
+    FROM delivery_time
+    GROUP BY 1
+),
+
+ranked AS (
+    SELECT
+        *,
+        DENSE_RANK() OVER (
+            ORDER BY average_delivery_time DESC
+        ) AS high_rank,
+        DENSE_RANK() OVER (
+            ORDER BY average_delivery_time ASC
+        ) AS low_rank
+    FROM avg_delivery_time
+)
+
+SELECT
+    customer_state,
+    average_delivery_time,
+    CASE
+        WHEN high_rank <= 5 THEN 'HIGH'
+        WHEN low_rank <= 5 THEN 'LOW'
+    END AS delivery_time_category
+FROM ranked
+WHERE high_rank <= 5
+   OR low_rank <= 5;
+
 
 
