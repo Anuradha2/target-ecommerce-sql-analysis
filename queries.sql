@@ -271,5 +271,29 @@ FROM total_freight_value_per_order
 GROUP BY 1
 ORDER BY 2 DESC, 3 DESC;
 
+/*------------------------------------------------------------------------------
+Business Question 12:
+How many days does it take to deliver each order, and how does the actual
+delivery date compare with the estimated delivery date?
+
+Objective:
+Calculate the delivery time for each order and measure the difference between
+the actual and estimated delivery dates to evaluate delivery performance.
+------------------------------------------------------------------------------*/
+
+SELECT
+    order_id,
+    DATE_DIFF(
+        order_delivered_customer_date,
+        order_purchase_timestamp,
+        DAY
+    ) AS time_to_deliver,
+    DATE_DIFF(
+        order_estimated_delivery_date,
+        order_delivered_customer_date,
+        DAY
+    ) AS diff_estimated_delivery
+FROM `Target.orders`;
+
 
 
