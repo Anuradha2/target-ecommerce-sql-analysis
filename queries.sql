@@ -446,5 +446,33 @@ FROM delivery_time
 ORDER BY 2 DESC
 LIMIT 5;
 
+/*==============================================================================
+SECTION 4: PAYMENT ANALYSIS
+==============================================================================*/
+
+/*------------------------------------------------------------------------------
+Business Question 16:
+How does the number of orders placed using different payment types change
+month over month?
+
+Objective:
+Analyze monthly order volume across different payment methods to understand
+customer payment preferences and how they evolve over time.
+------------------------------------------------------------------------------*/
+
+SELECT
+    p.payment_type,
+    EXTRACT(YEAR FROM o.order_purchase_timestamp) AS year,
+    FORMAT_DATETIME('%B', o.order_purchase_timestamp) AS month,
+    COUNT(DISTINCT o.order_id) AS order_count
+FROM `Target.orders` AS o
+INNER JOIN `Target.payments` AS p
+    ON o.order_id = p.order_id
+GROUP BY 1, 2, 3
+ORDER BY
+    1,
+    2,
+    MIN(EXTRACT(MONTH FROM o.order_purchase_timestamp));
+
 
 
