@@ -211,5 +211,35 @@ SELECT
     ) AS percentage_increase
 FROM total_cost_per_year;
 
+/*------------------------------------------------------------------------------
+Business Question 10:
+What are the total and average order values for each state?
+
+Objective:
+Analyze the total and average value of orders across Brazilian states to
+identify high-value regional markets and differences in customer spending.
+------------------------------------------------------------------------------*/
+
+WITH total_value_per_order AS (
+    SELECT
+        o.order_id,
+        c.customer_state,
+        SUM(oi.price) AS order_value
+    FROM `Target.customers` AS c
+    INNER JOIN `Target.orders` AS o
+        ON c.customer_id = o.customer_id
+    INNER JOIN `Target.order_items` AS oi
+        ON o.order_id = oi.order_id
+    GROUP BY 1, 2
+)
+
+SELECT
+    customer_state,
+    ROUND(SUM(order_value), 2) AS total_order_value,
+    ROUND(AVG(order_value), 2) AS average_order_value
+FROM total_value_per_order
+GROUP BY 1
+ORDER BY 2 DESC, 3 DESC;
+
 
 
