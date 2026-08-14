@@ -401,5 +401,50 @@ FROM ranked
 WHERE high_rank <= 5
    OR low_rank <= 5;
 
+/*------------------------------------------------------------------------------
+Business Question 15:
+Which are the top 5 states where orders are delivered fastest compared with
+the estimated delivery date?
+
+Objective:
+Compare the average actual delivery time with the average estimated delivery
+time for each state to identify the states with the fastest delivery
+performance relative to expectations.
+------------------------------------------------------------------------------*/
+
+WITH delivery_time AS (
+    SELECT
+        c.customer_state,
+        AVG(
+            DATE_DIFF(
+                o.order_delivered_customer_date,
+                o.order_purchase_timestamp,
+                DAY
+            )
+        ) AS average_time_to_deliver,
+        AVG(
+            DATE_DIFF(
+                o.order_estimated_delivery_date,
+                o.order_purchase_timestamp,
+                DAY
+            )
+        ) AS average_estimated_time_to_deliver
+    FROM `Target.customers` AS c
+    INNER JOIN `Target.orders` AS o
+        ON c.customer_id = o.customer_id
+    WHERE o.order_delivered_customer_date IS NOT NULL
+    GROUP BY 1
+)
+
+SELECT
+    customer_state,
+    ROUND(
+        average_estimated_time_to_deliver - average_time_to_deliver,
+        2
+    ) AS delivery_speed
+FROM delivery_time
+ORDER BY 2 DESC
+LIMIT 5;
+
 
 
