@@ -474,5 +474,24 @@ ORDER BY
     2,
     MIN(EXTRACT(MONTH FROM o.order_purchase_timestamp));
 
+/*------------------------------------------------------------------------------
+Business Question 17:
+How many orders were placed based on the number of payment installments?
+
+Objective:
+Analyze the distribution of orders across different payment installment
+options to understand customer preferences for installment-based payments.
+------------------------------------------------------------------------------*/
+
+SELECT
+    p.payment_installments,
+    COUNT(DISTINCT o.order_id) AS order_count
+FROM `Target.orders` AS o
+INNER JOIN `Target.payments` AS p
+    ON o.order_id = p.order_id
+WHERE p.payment_installments >= 1
+GROUP BY 1
+ORDER BY 1;
+
 
 
