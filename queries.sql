@@ -241,5 +241,35 @@ FROM total_value_per_order
 GROUP BY 1
 ORDER BY 2 DESC, 3 DESC;
 
+/*------------------------------------------------------------------------------
+Business Question 11:
+What are the total and average freight values for each state?
+
+Objective:
+Analyze total and average freight costs across Brazilian states to identify
+regional differences in shipping costs.
+------------------------------------------------------------------------------*/
+
+WITH total_freight_value_per_order AS (
+    SELECT
+        o.order_id,
+        c.customer_state,
+        SUM(oi.freight_value) AS order_freight_value
+    FROM `Target.customers` AS c
+    INNER JOIN `Target.orders` AS o
+        ON c.customer_id = o.customer_id
+    INNER JOIN `Target.order_items` AS oi
+        ON o.order_id = oi.order_id
+    GROUP BY 1, 2
+)
+
+SELECT
+    customer_state,
+    ROUND(SUM(order_freight_value), 2) AS total_freight_value,
+    ROUND(AVG(order_freight_value), 2) AS average_freight_value
+FROM total_freight_value_per_order
+GROUP BY 1
+ORDER BY 2 DESC, 3 DESC;
+
 
 
