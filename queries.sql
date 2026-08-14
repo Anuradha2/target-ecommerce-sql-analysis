@@ -176,5 +176,40 @@ INNER JOIN `Target.orders` AS o
 GROUP BY 1
 ORDER BY 2 DESC;
 
+/*------------------------------------------------------------------------------
+Business Question 9:
+What was the percentage increase in order value from 2017 to 2018 for the
+months of January through August?
+
+Objective:
+Compare the total payment value of orders between 2017 and 2018 for the
+January–August period to measure year-over-year growth in order value.
+------------------------------------------------------------------------------*/
+
+WITH total_cost_per_year AS (
+    SELECT
+        EXTRACT(YEAR FROM o.order_purchase_timestamp) AS year,
+        SUM(p.payment_value) AS total_cost
+    FROM `Target.orders` AS o
+    INNER JOIN `Target.payments` AS p
+        ON o.order_id = p.order_id
+    WHERE EXTRACT(MONTH FROM o.order_purchase_timestamp) BETWEEN 1 AND 8
+        AND EXTRACT(YEAR FROM o.order_purchase_timestamp) IN (2017, 2018)
+    GROUP BY 1
+)
+
+SELECT
+    year,
+    total_cost,
+    LAG(total_cost) OVER (ORDER BY year) AS previous_year_cost,
+    ROUND(
+        (
+            (total_cost - LAG(total_cost) OVER (ORDER BY year))
+            / LAG(total_cost) OVER (ORDER BY year)
+        ) * 100,
+        2
+    ) AS percentage_increase
+FROM total_cost_per_year;
+
 
 
