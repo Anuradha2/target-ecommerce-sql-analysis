@@ -126,3 +126,52 @@ Business Recommendation:
   prepare stock for upcoming demand periods.
 */
 
+/*------------------------------------------------------------------------------
+Business Question 6:
+During what time of the day do Brazilian customers mostly place their orders?
+
+Objective:
+Analyze order volume across different time-of-day segments to identify when
+customers are most active on the platform.
+
+Time Segments:
+00:00–06:00 → Dawn
+07:00–12:00 → Morning
+13:00–18:00 → Afternoon
+19:00–23:00 → Night
+------------------------------------------------------------------------------*/
+
+WITH hrs AS (
+    SELECT
+        order_id,
+        EXTRACT(HOUR FROM order_purchase_timestamp) AS hours
+    FROM `Target.orders`
+)
+
+SELECT
+    CASE
+        WHEN hours BETWEEN 0 AND 6 THEN 'Dawn'
+        WHEN hours BETWEEN 7 AND 12 THEN 'Morning'
+        WHEN hours BETWEEN 13 AND 18 THEN 'Afternoon'
+        WHEN hours BETWEEN 19 AND 23 THEN 'Night'
+    END AS time_of_day,
+    COUNT(*) AS order_count
+FROM hrs
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*
+Observation:
+- Most orders were placed during the afternoon, followed by night and morning.
+- Dawn recorded the lowest order activity.
+- Overall, customer activity was highest during the afternoon.
+
+Business Insight:
+The afternoon represents the peak customer activity period, making it an
+important time window for customer engagement.
+
+Business Recommendation:
+Schedule sales, promotional offers, and marketing campaigns during afternoon
+hours when customer activity is highest to maximize customer engagement.
+*/
+
