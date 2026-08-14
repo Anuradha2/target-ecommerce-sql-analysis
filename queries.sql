@@ -295,5 +295,58 @@ SELECT
     ) AS diff_estimated_delivery
 FROM `Target.orders`;
 
+/*------------------------------------------------------------------------------
+Business Question 13:
+Which states have the highest and lowest average freight values?
+
+Objective:
+Identify the top 5 states with the highest and lowest average freight values
+to understand regional differences in shipping costs.
+------------------------------------------------------------------------------*/
+
+WITH total_freight_value_per_order AS (
+    SELECT
+        o.order_id,
+        c.customer_state,
+        SUM(oi.freight_value) AS order_freight_value
+    FROM `Target.customers` AS c
+    INNER JOIN `Target.orders` AS o
+        ON c.customer_id = o.customer_id
+    INNER JOIN `Target.order_items` AS oi
+        ON o.order_id = oi.order_id
+    GROUP BY 1, 2
+),
+
+average_freight_value AS (
+    SELECT
+        customer_state,
+        ROUND(AVG(order_freight_value), 2) AS average_freight_value
+    FROM total_freight_value_per_order
+    GROUP BY 1
+),
+
+ranked AS (
+    SELECT
+        *,
+        DENSE_RANK() OVER (
+            ORDER BY average_freight_value DESC
+        ) AS high_rank,
+        DENSE_RANK() OVER (
+            ORDER BY average_freight_value
+        ) AS low_rank
+    FROM average_freight_value
+)
+
+SELECT
+    customer_state,
+    average_freight_value,
+    CASE
+        WHEN high_rank <= 5 THEN 'HIGH'
+        WHEN low_rank <= 5 THEN 'LOW'
+    END AS freight_category
+FROM ranked
+WHERE high_rank <= 5
+   OR low_rank <= 5;
+
 
 
