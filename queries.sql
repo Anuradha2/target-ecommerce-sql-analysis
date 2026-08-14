@@ -42,8 +42,8 @@ Identify the earliest and latest order dates available in the dataset.
 ------------------------------------------------------------------------------*/
 
 SELECT 
-    min(order_purchase_timestamp) AS first_order_purchased,
-    max(order_purchase_timestamp) AS last_order_purchased
+    MIN(order_purchase_timestamp) AS first_order_purchased,
+    MAX(order_purchase_timestamp) AS last_order_purchased
 FROM 
     `Target.orders`;
 
@@ -70,12 +70,12 @@ Business Question 4:
 Is there a growing trend in the number of orders placed over time?
 
 Objective:
-Analyze yearly order volume to identify whether Target Brazil experienced
-growth in customer orders over the analysis period.
+Analyze monthly order volume to identify whether Target Brazil experienced
+growth in customer order activity over the analysis period.
 ------------------------------------------------------------------------------*/
 
 SELECT 
-    FORMAT_DATE("%Y-%m", order_purchase_timestamp) AS year_month, 
+    FORMAT_DATETIME("%Y-%m", order_purchase_timestamp) AS year_month, 
     COUNT(DISTINCT order_id) AS order_count
 FROM `Target.orders`
 GROUP BY 1
