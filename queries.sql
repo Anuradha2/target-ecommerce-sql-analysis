@@ -81,13 +81,6 @@ FROM `Target.orders`
 GROUP BY 1
 ORDER BY 1;
 
-/*
-Observation:
-The number of orders shows an overall increasing trend over the analysis period,
-indicating growing order activity on the platform. The month-on-month trend also
-shows a consistent increase in order volume over time.
-*/
-
 /*------------------------------------------------------------------------------
 Business Question 5:
 Can we see any monthly seasonality in the number of orders placed?
@@ -103,28 +96,6 @@ SELECT
 FROM `Target.orders`
 GROUP BY 1
 ORDER BY MIN(extract(MONTH FROM order_purchase_timestamp));
-
-/*
-Observation:
-- Order volume showed continuous growth from the beginning of the analysis
-  period through August.
-- Order volume declined significantly from September onward.
-- November showed a noticeable increase in order volume, which may be
-  associated with increased year-end shopping activity, including
-  Black Friday promotions.
-*/
-
-/*
-Business Insight:
-The analysis indicates that order demand is stronger during the first part
-of the year, with a noticeable increase in November.
-
-Business Recommendation:
-- Schedule major marketing campaigns and promotional activities around the
-  year-end shopping period, particularly leading up to November.
-- Use the lower-demand period in December to review inventory levels and
-  prepare stock for upcoming demand periods.
-*/
 
 /*------------------------------------------------------------------------------
 Business Question 6:
@@ -160,18 +131,32 @@ FROM hrs
 GROUP BY 1
 ORDER BY 2 DESC;
 
-/*
-Observation:
-- Most orders were placed during the afternoon, followed by night and morning.
-- Dawn recorded the lowest order activity.
-- Overall, customer activity was highest during the afternoon.
+/*==============================================================================
+SECTION 3: REGIONAL ANALYSIS
+==============================================================================*/
 
-Business Insight:
-The afternoon represents the peak customer activity period, making it an
-important time window for customer engagement.
+/*------------------------------------------------------------------------------
+Business Question 7:
+How does the number of orders placed in each state change month over month?
 
-Business Recommendation:
-Schedule sales, promotional offers, and marketing campaigns during afternoon
-hours when customer activity is highest to maximize customer engagement.
-*/
+Objective:
+Analyze monthly order volume across Brazilian states to identify regional
+order trends and understand how e-commerce activity has evolved over time.
+------------------------------------------------------------------------------*/
+
+SELECT
+    c.customer_state,
+    EXTRACT(YEAR FROM o.order_purchase_timestamp) AS year,
+    FORMAT_DATETIME('%B', o.order_purchase_timestamp) AS month,
+    COUNT(o.order_id) AS order_count
+FROM `Target.customers` AS c
+INNER JOIN `Target.orders` AS o
+    ON c.customer_id = o.customer_id
+GROUP BY 1, 2, 3
+ORDER BY
+    1,
+    2,
+    MIN(EXTRACT(MONTH FROM o.order_purchase_timestamp));
+
+
 
