@@ -89,6 +89,30 @@ The following business questions were analyzed to understand customer behavior, 
 - How do payment methods vary month over month?
 - How are orders distributed based on payment installments?
 
+## 📊 Tableau Dashboard
+
+The SQL analysis was further visualized using Tableau to create interactive dashboards covering sales trends, customer distribution, delivery performance, freight costs, and payment behavior.
+
+### Dashboards
+
+- **Brazil E-Commerce Executive Overview**
+  - Order and customer KPIs
+  - Monthly order trends
+  - Customer distribution by state
+  - Order value by state
+  - Delivery performance
+  - Orders by time of day
+
+- **Brazil E-Commerce Detailed Analysis**
+  - Payment type and installment analysis
+  - Monthly payment trends
+  - Freight value by state
+  - Delivery time by state
+  - Early delivery performance
+  - Late delivery rate by state
+
+🔗 **[View Interactive Tableau Dashboard](https://public.tableau.com/shared/XKY2WFJYQ?:display_count=n&:origin=viz_share_link)**
+
 ## 💡 Key Insights
 
 - 📈 Order volume showed consistent year-over-year growth from 2016 to 2018, indicating increasing customer adoption.
