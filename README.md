@@ -48,6 +48,7 @@ The project followed a structured data analysis workflow:
 
 **Tools**
 - Google BigQuery
+- Tableau
 
 **SQL Concepts**
 - Joins
