@@ -1,16 +1,16 @@
-# 🛒 Target Brazil E-commerce Analysis using SQL
+# 🛒 Target Brazil E-Commerce Analysis | SQL & Tableau
 
 ## 📌 Project Overview
 
-This project analyzes Target Brazil's e-commerce dataset using SQL in Google BigQuery. The objective is to explore customer purchasing behavior, sales trends, delivery performance, freight costs, and payment patterns to generate actionable business insights.
+This project analyzes Target Brazil's e-commerce data using SQL in Google BigQuery and Tableau to uncover insights into customer purchasing behavior, sales trends, regional performance, delivery efficiency, freight costs, and payment patterns.
 
-The analysis involves writing SQL queries to answer real-world business questions and transforming raw transactional data into meaningful insights that can support business decision-making.
+The analysis combines SQL-based data exploration and business analysis with interactive Tableau dashboards to transform raw e-commerce data into actionable business insights.
 
 ## 🎯 Business Context
 
-Target is a globally recognized retail company with a strong e-commerce presence in Brazil. This project analyzes approximately **100,000 e-commerce orders** placed between **2016 and 2018** to understand customer purchasing behavior, sales trends, logistics performance, delivery efficiency, and payment patterns.
+Target is a leading retail company with a strong e-commerce presence in Brazil. This project analyzes approximately **100,000 e-commerce orders** placed between **2016 and 2018** to understand customer purchasing behavior, sales trends, logistics performance, delivery efficiency, and payment patterns.
 
-Using SQL, this project generates data-driven insights and business recommendations that can support marketing, logistics, and operational decision-making.
+Using SQL and Tableau, this project generates data-driven insights and business recommendations to support marketing, logistics, and operational decision-making.
 
 ## 📂 Dataset Information
 
@@ -33,15 +33,16 @@ The dataset consists of eight relational tables:
 
 ## 🔄 Project Workflow
 
-The project followed a structured analytical approach:
+The project followed a structured data analysis workflow:
 
 1. Explored the dataset and understood table relationships.
-2. Performed exploratory data analysis (EDA).
+2. Performed exploratory data analysis using SQL.
 3. Analyzed customer purchasing behavior and order trends.
 4. Evaluated regional sales and customer distribution.
 5. Assessed logistics performance using freight and delivery metrics.
 6. Examined payment methods and installment patterns.
-7. Derived business insights and proposed actionable recommendations.
+7. Derived key business insights and recommendations.
+8. Created interactive Tableau dashboards to visualize the findings.
 
 ## 🛠️ Tools & SQL Concepts
 
@@ -61,34 +62,32 @@ The project followed a structured analytical approach:
 - Mathematical Functions (`ROUND`)
 
 ## 📊 Business Questions
-The following business questions were analyzed to understand customer behavior, operational efficiency, logistics performance, regional trends, and payment patterns.
 
-### 1. Exploratory Analysis
-- What is the structure of the dataset?
-- What is the time range of the orders?
-- How many cities and states placed orders?
+The analysis answers 17 business questions across four key areas:
 
-### 2. Customer Purchasing Behavior
-- Is there a growing trend in the number of orders?
-- Is there monthly seasonality in orders?
-- During which time of the day do customers place the most orders?
+### 1. Data Exploration
+- Data types and table structure
+- Order date range
+- Geographical coverage
 
-### 3. Regional Analysis
-- What is the month-on-month order trend across states?
-- How are customers distributed across states?
+### 2. Customer & Regional Analysis
+- Order growth and monthly seasonality
+- Customer purchasing patterns by time of day
+- Monthly order trends across states
+- Customer distribution across states
+- Order value by state
 
-### 4. Sales, Freight & Delivery Analysis
-- What is the percentage increase in order value from 2017 to 2018?
-- What are the total and average order values by state?
-- What are the total and average freight charges by state?
-- Which states have the highest and lowest average freight costs?
-- Which states have the highest and lowest average delivery times?
-- Which states receive deliveries earlier than the estimated delivery date?
+### 3. Sales, Freight & Delivery Analysis
+- Year-over-year order value growth
+- Total and average freight value by state
+- Highest and lowest average freight costs
+- Highest and lowest average delivery times
+- States with the fastest delivery relative to estimates
 
-### 5. Payment Analysis
-- How do payment methods vary month over month?
-- How are orders distributed based on payment installments?
-
+### 4. Payment Analysis
+- Monthly payment-type trends
+- Distribution of orders by payment installments
+  
 ## 📊 Tableau Dashboard
 
 The SQL analysis was further visualized using Tableau to create interactive dashboards covering sales trends, customer distribution, delivery performance, freight costs, and payment behavior.
@@ -123,28 +122,36 @@ The SQL analysis was further visualized using Tableau to create interactive dash
 
 ## 💡 Key Insights
 
-- 📈 Order volume showed consistent year-over-year growth from 2016 to 2018, indicating increasing customer adoption.
+- 📈 Order volume showed an overall upward trend across the analysis period, indicating growing e-commerce activity.
 
-- 🌆 São Paulo (SP) recorded the highest number of customers and orders, making it Target Brazil's strongest regional market.
+- 🌆 São Paulo (SP) had the highest customer and order concentration, making it the strongest regional market.
 
-- 🕑 Most orders were placed during the afternoon, suggesting peak customer activity during this time.
+- 🕑 The afternoon recorded the highest order activity, indicating peak customer engagement during this period.
 
-- 💳 Credit cards were the most preferred payment method across the study period.
+- 💰 Order values and freight costs varied considerably across states, highlighting differences in regional market value and logistics costs.
 
-- 🚚 Delivery performance exceeded estimated delivery dates in most states, reflecting efficient logistics operations.
+- 🚚 Delivery performance varied across states, with several states receiving orders earlier than their estimated delivery dates.
 
-- 💰 Freight charges varied significantly across states, highlighting opportunities to optimize logistics costs.
+- 💳 Credit cards were the most commonly used payment method, while installment-based payments were also widely used.
 
+- 📊 The Tableau dashboards provide an interactive view of sales, customer, delivery, freight, and payment patterns identified through the SQL analysis.
+  
 ## 🚀 Business Recommendations
 
-- Prioritize marketing campaigns in high-performing states while developing strategies to improve customer acquisition in lower-performing regions.
+- Prioritize marketing and customer acquisition efforts in high-performing states while identifying opportunities in lower-performing regions.
 
-- Strengthen logistics infrastructure in states with longer delivery times.
+- Strengthen logistics operations in states with longer delivery times to improve overall delivery efficiency.
 
-- Optimize freight costs through regional warehouse planning and route optimization.
+- Optimize regional freight costs through improved warehouse planning and delivery-route optimization.
 
-- Prepare inventory before seasonal demand peaks.
+- Prepare inventory and logistics capacity ahead of periods with higher seasonal demand.
 
-- Encourage adoption of alternative payment methods through targeted promotions.
+- Use targeted promotions to encourage adoption of alternative payment methods and suitable installment options.
+
+## 📁 Project Files
+
+- [`queries.sql`](queries.sql) — SQL queries used to answer the 17 business questions.
+- [`dashboard-1-executive-overview.png`](dashboard-1-executive-overview.png) — Tableau Executive Overview dashboard.
+- [`dashboard-2-detailed-analysis.png`](dashboard-2-detailed-analysis.png) — Tableau Detailed Analysis dashboard.
 
 
