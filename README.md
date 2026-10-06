@@ -113,6 +113,14 @@ The SQL analysis was further visualized using Tableau to create interactive dash
 
 🔗 **[View Interactive Tableau Dashboard](https://public.tableau.com/shared/XKY2WFJYQ?:display_count=n&:origin=viz_share_link)**
 
+### Dashboard Preview
+
+#### Executive Overview
+![Brazil E-Commerce Executive Overview](dashboard-1-executive-overview.png)
+
+#### Detailed Analysis
+![Brazil E-Commerce Detailed Analysis](dashboard-2-detailed-analysis.png)
+
 ## 💡 Key Insights
 
 - 📈 Order volume showed consistent year-over-year growth from 2016 to 2018, indicating increasing customer adoption.
