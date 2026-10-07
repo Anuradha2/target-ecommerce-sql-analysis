@@ -111,7 +111,7 @@ The SQL analysis was further visualized using Tableau to create interactive dash
   - Early delivery performance
   - Late delivery rate by state
 
-🔗 **[View Interactive Tableau Dashboard](https://public.tableau.com/shared/XKY2WFJYQ?:display_count=n&:origin=viz_share_link)**
+🔗 **[View Interactive Tableau Dashboard](https://public.tableau.com/views/BrazilE-CommerceSalesCustomerAnalysis/ExecutiveOverview?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)**
 
 ### Dashboard Preview
 
