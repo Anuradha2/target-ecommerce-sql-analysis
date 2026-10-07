@@ -152,6 +152,7 @@ The SQL analysis was further visualized using Tableau to create interactive dash
 ## 📁 Project Files
 
 - [`queries.sql`](queries.sql) — SQL queries used to answer the 17 business questions.
+- [`SQL-Query-Results.pdf`](SQL-Query-Results.pdf) — Screenshots of the results for all 17 SQL queries.
 - [`dashboard-1-executive-overview.png`](dashboard-1-executive-overview.png) — Tableau Executive Overview dashboard.
 - [`dashboard-2-detailed-analysis.png`](dashboard-2-detailed-analysis.png) — Tableau Detailed Analysis dashboard.
 
