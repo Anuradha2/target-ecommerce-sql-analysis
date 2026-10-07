@@ -317,7 +317,7 @@ WITH total_freight_value_per_order AS (
     GROUP BY 1, 2
 ),
 
-average_freight_value AS (
+avg_freight_value AS (
     SELECT
         customer_state,
         ROUND(AVG(order_freight_value), 2) AS average_freight_value
@@ -334,7 +334,7 @@ ranked AS (
         DENSE_RANK() OVER (
             ORDER BY average_freight_value
         ) AS low_rank
-    FROM average_freight_value
+    FROM avg_freight_value
 )
 
 SELECT
