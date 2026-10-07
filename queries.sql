@@ -169,7 +169,7 @@ geographical distribution of Target Brazil's customer base.
 
 SELECT
     c.customer_state,
-    COUNT(DISTINCT c.customer_id) AS customer_count
+    COUNT(DISTINCT c.customer_unique_id) AS customer_count
 FROM `Target.customers` AS c
 INNER JOIN `Target.orders` AS o
     ON c.customer_id = o.customer_id
